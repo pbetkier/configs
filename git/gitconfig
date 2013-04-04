@@ -28,6 +28,8 @@
 [push]
     # 'git push' should only do the current branch, not all
     default = current
+[help]
+	autocorrect = 1
 [alias]
     ci = commit --verbose
     st = status
