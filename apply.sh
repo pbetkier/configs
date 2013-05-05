@@ -7,7 +7,7 @@ CONFIGS_DIR=$( cd "$( dirname "$0" )" && pwd )
 echo "Creating backup ..."
 BACKUP_DIR=`date +"%d-%m-%Y_%s"`
 mkdir -p $CONFIGS_DIR/backups/$BACKUP_DIR
-`cp -RLt $CONFIGS_DIR/backups/$BACKUP_DIR $HOME/.vim $HOME/.vimrc $HOME/.gitconfig $HOME/.git-completion.bash`
+`cp -RLt $CONFIGS_DIR/backups/$BACKUP_DIR $HOME/.vim $HOME/.vimrc $HOME/.gitconfig $HOME/.git-completion.bash $HOME/.bash`
 
 echo "Appending source entry to .bashrc ..."
 SOURCE_CMD="source $CONFIGS_DIR/bash/additional_conf"
@@ -18,9 +18,10 @@ if ! grep -Fxq "$SOURCE_CMD" $HOME/.bashrc; then
 fi
 
 echo "Creating symlinks ..."
-`ln -sTf $CONFIGS_DIR/vim/vim $HOME/.vim `
+`ln -sTf $CONFIGS_DIR/vim/vim $HOME/.vim`
 `ln -sTf $CONFIGS_DIR/vim/vimrc $HOME/.vimrc`
 `ln -sTf $CONFIGS_DIR/git/gitconfig $HOME/.gitconfig`
 `ln -sTf $CONFIGS_DIR/git/git-completion.bash $HOME/.git-completion.bash`
+`ln -sTf $CONFIGS_DIR/bash/bash $HOME/.bash`
 
 echo "Done!"
