@@ -7,7 +7,7 @@ CONFIGS_DIR=$( cd "$( dirname "$0" )" && pwd )
 echo "Creating backup ..."
 BACKUP_DIR=`date +"%d-%m-%Y_%s"`
 mkdir -p $CONFIGS_DIR/backups/$BACKUP_DIR
-`cp -RLt $CONFIGS_DIR/backups/$BACKUP_DIR $HOME/.{vim,vimrc,gitconfig,gitignore_global,git-completion.bash,bash}`
+`cp -RLt $CONFIGS_DIR/backups/$BACKUP_DIR $HOME/.{vim,vimrc,gitconfig,gitignore_global,git-completion.bash,bash,config/fish/config.fish}`
 
 echo "Appending source entry to .bashrc ..."
 SOURCE_CMD="source $CONFIGS_DIR/bash/additional_conf"
@@ -26,5 +26,8 @@ echo "Creating symlinks ..."
 `ln -sTf $CONFIGS_DIR/git/git-completion.bash $HOME/.git-completion.bash`
 
 `ln -sTf $CONFIGS_DIR/bash/bash $HOME/.bash`
+
+`ln -sTf $CONFIGS_DIR/fish/config.fish $HOME/.config/fish/config.fish`
+`ln -sft $HOME/.config/fish/functions $CONFIGS_DIR/fish/functions/*`
 
 echo "Done!"
