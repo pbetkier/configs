@@ -9,9 +9,9 @@ Clone and enter the repository::
   $ git clone https://bitbucket.org/pbetkier/configs.git
   $ cd configs/
 
-Run ``apply.sh`` script to install the config. **This will override your current configuration**::
+Run ``install_config.sh`` script to install the config. **This will override your current configuration**::
 
-  $ ./apply.sh
+  $ ./install_config.sh
   Creating backup ...
   Appending source entry to .bashrc ...
   Creating symlinks ...
