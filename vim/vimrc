@@ -89,3 +89,5 @@ highlight SpellBad ctermfg=DarkRed cterm=undercurl
 execute pathogen#infect()
 "aby background byl taki jak dla LineNr
 highlight clear SignColumn
+
+set shell=/bin/bash
