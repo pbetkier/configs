@@ -4,12 +4,14 @@
 
 CONFIGS_DIR=$( cd "$( dirname "$0" )" && pwd )
 
-echo "Creating backup ..."
+echo "Installing config ..."
+
+echo " Creating backup ..."
 BACKUP_DIR=`date +"%d-%m-%Y_%s"`
 mkdir -p $CONFIGS_DIR/backups/$BACKUP_DIR
 `cp -RLt $CONFIGS_DIR/backups/$BACKUP_DIR $HOME/.{vim,vimrc,gitconfig,gitignore_global,git-completion.bash,bash,config/fish/config.fish}`
 
-echo "Appending source entry to .bashrc ..."
+echo " Appending source entry to .bashrc ..."
 SOURCE_CMD="source $CONFIGS_DIR/bash/additional_conf"
 
 #add entry if it doesn't exist yet
@@ -17,7 +19,7 @@ if ! grep -Fxq "$SOURCE_CMD" $HOME/.bashrc; then
     echo -e "#more conf added by configs apply.sh\n$SOURCE_CMD" >> $HOME/.bashrc
 fi
 
-echo "Creating symlinks ..."
+echo " Creating symlinks ..."
 `ln -sTf $CONFIGS_DIR/vim/vim $HOME/.vim`
 `ln -sTf $CONFIGS_DIR/vim/vimrc $HOME/.vimrc`
 
@@ -30,4 +32,4 @@ echo "Creating symlinks ..."
 `ln -sTf $CONFIGS_DIR/fish/config.fish $HOME/.config/fish/config.fish`
 `ln -sft $HOME/.config/fish/functions $CONFIGS_DIR/fish/functions/*`
 
-echo "Done!"
+echo "Done installing config."
