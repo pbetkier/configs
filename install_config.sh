@@ -22,4 +22,10 @@ echo " Creating symlinks ..."
 `ln -sTf $CONFIGS_DIR/fish/config.fish $HOME/.config/fish/config.fish`
 `ln -sft $HOME/.config/fish/functions $CONFIGS_DIR/fish/functions/*`
 
+echo " Updating gitconfig with user data ..."
+read -p "  Enter your git user name: " GIT_USER_NAME
+read -p "  Enter your git user email: " GIT_USER_EMAIL
+`git config --global user.name "$GIT_USER_NAME"`
+`git config --global user.email "$GIT_USER_EMAIL"`
+
 echo "Done installing config."
