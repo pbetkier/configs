@@ -1,5 +1,5 @@
 #!/bin/bash
-# Applies this configuration by adding source command to .bashrc and creating symlinks to config files. 
+# Applies this configuration by creating symlinks to config files. 
 # Previous configuration files are saved in backups directory.
 
 CONFIGS_DIR=$( cd "$( dirname "$0" )" && pwd )
