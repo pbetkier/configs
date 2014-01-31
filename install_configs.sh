@@ -17,7 +17,6 @@ echo " Creating symlinks ..."
 
 `ln -sTf $CONFIGS_DIR/git/gitconfig $HOME/.gitconfig`
 `ln -sTf $CONFIGS_DIR/git/gitignore_global $HOME/.gitignore_global`
-`ln -sTf $CONFIGS_DIR/git/git-completion.bash $HOME/.git-completion.bash`
 
 `ln -sTf $CONFIGS_DIR/fish/config.fish $HOME/.config/fish/config.fish`
 `ln -sft $HOME/.config/fish/functions $CONFIGS_DIR/fish/functions/*`
