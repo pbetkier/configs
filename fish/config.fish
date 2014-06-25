@@ -6,14 +6,18 @@ set -g fish_color_host yellow
 set -g fish_prompt_git_status_git_dir '⚒'  
 set -g fish_prompt_git_remote_space ' '
 
+set LC_CTYPE en_US.UTF-8
+
 setenv EDITOR vim
 set -U EDITOR vim
 
 set PATH $PATH /opt/jdk/bin
 set PATH $PATH /opt/gradle/bin
 set PATH $PATH /opt/node/bin
+set PATH $PATH /opt/node_modules/bower/bin
 
 set MAVEN_OPTS "-Xmx512m -XX:MaxPermSize=128m"
+set JAVA_HOME /opt/jdk
 
 . $HOME/.config/fish/informative_git_prompt.fish
 
