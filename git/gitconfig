@@ -43,4 +43,4 @@
     stat = log --stat
 
 [core]
-	excludesfile = /home/pbetkier/.gitignore_global
+	excludesfile = ~/.gitignore_global
