@@ -13,7 +13,7 @@ set -x PATH $PATH $GOPATH/bin
 # Git prompt integration
 set -g fish_prompt_git_status_git_dir '⚒'  
 set -g fish_prompt_git_remote_space ' '
-. $HOME/configs/fish/functions/__informative_git_prompt.fish
+. $HOME/.config/fish/functions/__informative_git_prompt.fish
 
 # Main prompt
 function fish_prompt --description 'Write out the prompt'
