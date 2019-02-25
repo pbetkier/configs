@@ -3,13 +3,24 @@
 # Previous configuration files are saved in backups directory.
 
 CONFIGS_DIR=$( cd "$( dirname "$0" )" && pwd )
+OLDFILE=$CONFIGS_DIR/`date +"%d-%m-%Y_%s"`.old
 
-echo "Installing config ..."
+echo "Installing configs, old contents backed up to $OLDFILE ..."
+touch $OLDFILE
 
-echo " Creating backup ..."
-BACKUP_DIR=`date +"%d-%m-%Y_%s"`
-mkdir -p $CONFIGS_DIR/backups/$BACKUP_DIR
-`cp -RLt $CONFIGS_DIR/backups/$BACKUP_DIR $HOME/.{vim,vimrc,gitconfig,gitignore_global,config/fish/config.fish}`
+cd files
+FILES=$(find . -type f -print | sed "s|^\./||")
+
+for f in $FILES; do
+    echo " $f ..."
+    echo "--- $f:" >> $OLDFILE
+    cat ~/$f >> $OLDFILE
+    echo >> $OLDFILE
+done
+
+
+exit
+#`cp -RLt $CONFIGS_DIR/backups/$BACKUP_DIR $HOME/.{vim,vimrc,gitconfig,gitignore_global,config/fish/config.fish}`
 
 echo " Creating symlinks ..."
 `ln -sTf $CONFIGS_DIR/vim/vim $HOME/.vim`
@@ -20,11 +31,5 @@ echo " Creating symlinks ..."
 
 `ln -sTf $CONFIGS_DIR/fish/config.fish $HOME/.config/fish/config.fish`
 `ln -sft $HOME/.config/fish/functions $CONFIGS_DIR/fish/functions/*`
-
-echo " Updating gitconfig with user data ..."
-read -p "  Enter your git user name: " GIT_USER_NAME
-read -p "  Enter your git user email: " GIT_USER_EMAIL
-`git config --global user.name "$GIT_USER_NAME"`
-`git config --global user.email "$GIT_USER_EMAIL"`
 
 echo "Done installing config."
