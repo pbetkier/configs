@@ -8,25 +8,21 @@
     interactive = auto
     ui = auto
 [color "branch"]
-    # good looking colors i copy/pasted from somewhere
     current = green bold
     local = green
     remote = red bold
 [color "diff"]
-    # good looking colors i copy/pasted from somewhere
     meta = yellow bold
     frag = magenta bold
     old = red bold
     new = green bold
 [color "status"]
-    # good looking colors i copy/pasted from somewhere
     added = green bold
     changed = yellow bold
     untracked = red
 [color "sh"]
     branch = yellow
 [push]
-    # 'git push' should only do the current branch, not all
     default = current
 [help]
 	autocorrect = 1
@@ -35,12 +31,11 @@
     st = status
     di = diff
     a = add
-
+    pl = pull
+    ph = push
     hist = log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset%C(yellow)%d%Creset %Cgreen(%cr)%Creset%n%w(80,8,8)%s' --graph
-    histfull = log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset%C(yellow)%d%Creset %Cgreen(%cr)%Creset%n%w(80,8,8)%s%n' --graph --name-status
     llog = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=iso
-    changelog = log --pretty=format:'%Cgreen%d %Creset%s' --date=iso
-    stat = log --stat
-
 [core]
 	excludesfile = ~/.gitignore_global
+[init]
+	templatedir = /Users/piotr.betkier/.git-templates
