@@ -28,13 +28,6 @@ function fish_prompt --description 'Write out the prompt'
   echo -n (whoami)
   set_color normal
 
-  echo -n '@'
-
-  # Host
-  set_color $fish_color_host
-  echo -n (hostname -s)
-  set_color normal
-
   echo -n ':'
 
   # PWD
