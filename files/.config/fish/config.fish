@@ -60,8 +60,15 @@ end
 
 # Virtualenv integration
 set -x VIRTUALFISH_COMPAT_ALIASES "true"
-eval (python3 -m virtualfish)
+#eval (python3 -m virtualfish)
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/opt/google-cloud-sdk/path.fish.inc'; else; . '/opt/google-cloud-sdk/path.fish.inc'; end; end
+# if [ -f '/opt/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/opt/google-cloud-sdk/path.fish.inc'; else; . '/opt/google-cloud-sdk/path.fish.inc'; end; end
 
+if test -f $HOME/.config/fish/local.fish
+    . $HOME/.config/fish/local.fish
+end
+
+function ipa-pass
+    sed -n 's/set\ pass\ "\(.*\)"/\1/p' ~/warsztaty/skylab-training-days/from-zero-to-bash-hero/ipa-pass-change.sh | tr -d \n
+end
