@@ -1,0 +1,7 @@
+<keymap version="1" name="my keymap" parent="Mac OS X">
+  <action id="ContextHelp" />
+  <action id="FrameSwitchAction">
+    <keyboard-shortcut first-keystroke="ctrl e" />
+  </action>
+</keymap>
+
