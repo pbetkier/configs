@@ -3,18 +3,6 @@ set -g fish_color_command green
 set -g fish_color_user magenta
 set -g fish_color_host yellow
 
-# Master password
-set -x MPW_FULLNAME "Piotr Betkier"
-
-# Golang stuff
-set -x GOPATH /Users/piotr.betkier/workspace/go
-set -x PATH $PATH $GOPATH/bin
-
-# Git prompt integration
-set -g fish_prompt_git_status_git_dir '⚒'  
-set -g fish_prompt_git_remote_space ' '
-. $HOME/.config/fish/functions/__informative_git_prompt.fish
-
 # Main prompt
 function fish_prompt --description 'Write out the prompt'
   set -l last_status $status
@@ -35,7 +23,7 @@ function fish_prompt --description 'Write out the prompt'
   echo -n (prompt_pwd)
   set_color normal
 
-  printf '%s ' (__informative_git_prompt)
+  printf "%s " (fish_git_prompt)
 
   if not test $last_status -eq 0
     set_color $fish_color_error
@@ -53,22 +41,11 @@ function fish_right_prompt -d "Write out the right prompt"
   set_color $fish_color_normal
 end
 
-# z and fzf integration under zz alias
-function zz
-    cd (z -l | fzf --height 40% --nth 2.. --reverse --inline-info --tac | awk '{print $2}')
-end
-
 # Virtualenv integration
 set -x VIRTUALFISH_COMPAT_ALIASES "true"
 #eval (python3 -m virtualfish)
-
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/opt/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/opt/google-cloud-sdk/path.fish.inc'; else; . '/opt/google-cloud-sdk/path.fish.inc'; end; end
 
 if test -f $HOME/.config/fish/local.fish
     . $HOME/.config/fish/local.fish
 end
 
-function ipa-pass
-    sed -n 's/set\ pass\ "\(.*\)"/\1/p' ~/warsztaty/skylab-training-days/from-zero-to-bash-hero/ipa-pass-change.sh | tr -d \n
-end
